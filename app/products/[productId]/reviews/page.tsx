@@ -1,9 +1,19 @@
-im
+import { notFound } from "next/navigation"
 
-export default function Products() {
+export default async function ProductReviews({
+    params,
+}: {
+    params: Promise <{ productId: string; reviewId: string;}>
+}) {
+    const { productId, reviewId } = await params
+    if (parseInt(reviewId) > 1000) {
+        notFound()
+    }
     return(
         <div>
-            <h1>Reviews page</h1>
+            <h1>
+            Review {reviewId} for product {productId}
+            </h1>
         </div>
     )
 }
