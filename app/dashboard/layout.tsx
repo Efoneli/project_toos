@@ -1,16 +1,19 @@
 
 
 export default function RootLayout({
-    main, sidebar, children,
+    main, sidebar, children, login
   }: Readonly<{
     children: React.ReactNode;
     main: React.ReactNode;
     sidebar: React.ReactNode;
+    login: React.ReactNode
   }>) {
-    return (
+    const isLoggedIn = true;
+    return isLoggedIn ? (
       <html lang="en">
         <body>
           {children}
+          
           <div className="flex">
             <div className="flex: 1">
                 {sidebar}
@@ -21,6 +24,8 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    );
+    ) : (
+        login
+    )
   }
   
